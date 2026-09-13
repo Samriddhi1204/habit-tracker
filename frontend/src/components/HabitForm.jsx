@@ -101,9 +101,9 @@ export default function HabitForm({ initial, onSubmit, onCancel, submitting }) {
               type="button"
               key={i}
               onClick={() => set("icon")(i)}
-              className={`w-10 h-10 rounded-xl text-xl flex items-center justify-center transition ${form.icon === i
-                ? "ring-2 ring-brand-500 bg-brand-500/15"
-                : "glass hover:bg-[var(--surface-hover)]"
+              className={`w-10 h-10 rounded-lg text-xl flex items-center justify-center transition ${form.icon === i
+                ? "ring-2 ring-brand-500 bg-[var(--chip-bg)]"
+                : "border divider hover:bg-[var(--surface-hover)]"
                 }`}
             >
               {i}

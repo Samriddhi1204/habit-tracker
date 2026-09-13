@@ -57,14 +57,14 @@ export default function WeeklyGrid({ habits, logsByHabit, days: customDays }) {
                     <div
                       className={`w-7 h-7 rounded-lg flex items-center justify-center transition ${
                         isDone
-                          ? "text-white shadow-md"
+                          ? "text-white"
                           : future
                           ? "text-faint"
                           : "text-faint"
                       }`}
                       style={
                         isDone
-                          ? { background: h.color, boxShadow: `0 4px 12px ${h.color}55` }
+                          ? { background: h.color }
                           : { background: "var(--chip-bg)" }
                       }
                     >

@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
 import {
-  Sparkles,
   RefreshCw,
   Brain,
   Trophy,
@@ -32,15 +31,15 @@ import { weekKeysFor, streakFromKeys } from "../utils/dateHelpers.js";
 import { useTheme } from "../context/ThemeContext.jsx";
 
 const PIE_COLORS = [
-  "#f59e0b",
-  "#fb923c",
-  "#ef4444",
-  "#ec4899",
-  "#8b5cf6",
-  "#6366f1",
-  "#0ea5e9",
-  "#10b981",
-  "#14b8a6",
+  "#305a3b",
+  "#b45309",
+  "#7f6a3f",
+  "#5c7a8a",
+  "#8a5a44",
+  "#5f8d68",
+  "#6b5b73",
+  "#94714f",
+  "#4a6b6b",
 ];
 
 const REPORT_CACHE_KEY = (weekStart) => `weekly-report-${weekStart}`;
@@ -51,12 +50,11 @@ export default function Insights() {
   const grid = isDark ? "rgba(255,255,255,0.08)" : "rgba(15,15,27,0.08)";
   const tick = isDark ? "#8a8aa0" : "#6b6b78";
   const tooltipStyle = {
-    background: isDark ? "rgba(20,20,36,0.95)" : "rgba(255,255,255,0.95)",
+    background: isDark ? "#23211a" : "#ffffff",
     border: `1px solid ${grid}`,
-    borderRadius: 12,
+    borderRadius: 8,
     fontSize: 12,
-    color: isDark ? "#ebebf5" : "#13131b",
-    backdropFilter: "blur(12px)",
+    color: isDark ? "#f1efe8" : "#191712",
   };
 
   const [habits, setHabits] = useState([]);
@@ -264,48 +262,39 @@ export default function Insights() {
       </div>
 
       {/* AI report */}
-      <div className="card p-6 relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none opacity-50"
-          style={{
-            background:
-              "radial-gradient(circle at 0% 0%, rgba(251,191,36,0.22), transparent 55%), radial-gradient(circle at 100% 100%, rgba(236,72,153,0.12), transparent 55%)",
-          }}
-        />
-        <div className="relative">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-400 to-brand-600 text-white flex items-center justify-center shadow-lg shadow-brand-500/30">
-              <Sparkles size={18} />
-            </div>
-            <div className="flex-1">
-              <div className="text-sm font-semibold">AI Weekly Report</div>
-              <div className="text-xs text-muted">
-                {reportGeneratedAt
-                  ? `Generated ${reportGeneratedAt.toLocaleString()}`
-                  : "Personalised review of your last 7 days"}
-              </div>
+      <div className="card p-6">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-10 h-10 rounded-lg bg-[var(--chip-bg)] text-brand-700 dark:text-brand-300 flex items-center justify-center">
+            <Brain size={18} />
+          </div>
+          <div className="flex-1">
+            <div className="text-sm font-semibold">Weekly report</div>
+            <div className="text-xs text-muted">
+              {reportGeneratedAt
+                ? `Generated ${reportGeneratedAt.toLocaleString()}`
+                : "Personalised review of your last 7 days"}
             </div>
           </div>
-
-          {reportLoading && !report && (
-            <div className="flex items-center gap-2 text-sm text-soft py-6">
-              <RefreshCw size={14} className="animate-spin" />
-              Analysing your week...
-            </div>
-          )}
-
-          {report && (
-            <Markdown className="glass rounded-xl p-4 text-sm">
-              {report}
-            </Markdown>
-          )}
-
-          {!report && !reportLoading && (
-            <button onClick={generateReport} className="btn-primary">
-              <Sparkles size={14} /> Generate report
-            </button>
-          )}
         </div>
+
+        {reportLoading && !report && (
+          <div className="flex items-center gap-2 text-sm text-soft py-6">
+            <RefreshCw size={14} className="animate-spin" />
+            Analysing your week...
+          </div>
+        )}
+
+        {report && (
+          <Markdown className="bg-[var(--surface-hover)] border divider rounded-lg p-4 text-sm">
+            {report}
+          </Markdown>
+        )}
+
+        {!report && !reportLoading && (
+          <button onClick={generateReport} className="btn-primary">
+            <Brain size={14} /> Generate report
+          </button>
+        )}
       </div>
 
       {/* Summary cards */}
@@ -373,12 +362,6 @@ export default function Insights() {
           <div style={{ width: "100%", height: 240 }}>
             <ResponsiveContainer>
               <BarChart data={dailyData}>
-                <defs>
-                  <linearGradient id="day-bar" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#fcd34d" />
-                    <stop offset="100%" stopColor="#d97706" />
-                  </linearGradient>
-                </defs>
                 <CartesianGrid strokeDasharray="3 3" stroke={grid} />
                 <XAxis
                   dataKey="label"
@@ -400,7 +383,7 @@ export default function Insights() {
                   }}
                   contentStyle={tooltipStyle}
                 />
-                <Bar dataKey="count" fill="url(#day-bar)" radius={[6, 6, 0, 0]} />
+                <Bar dataKey="count" fill="#305a3b" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -432,8 +415,8 @@ export default function Insights() {
                   iconType="circle"
                   iconSize={8}
                 />
-                <Bar dataKey="Last week" fill="#cbd5e1" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="This week" fill="#f59e0b" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="Last week" fill="#c2bbab" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="This week" fill="#305a3b" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           </div>
@@ -509,8 +492,6 @@ export default function Insights() {
                       style={{
                         width: `${pct}%`,
                         background: habit.color,
-                        boxShadow:
-                          pct === 100 ? `0 0 12px ${habit.color}88` : "none",
                       }}
                     />
                   </div>
@@ -539,7 +520,7 @@ export default function Insights() {
                 return (
                   <div
                     key={h._id}
-                    className="rounded-xl glass p-3 flex items-center gap-3"
+                    className="rounded-lg border divider p-3 flex items-center gap-3"
                   >
                     <span
                       className="w-9 h-9 rounded-lg flex items-center justify-center text-lg shrink-0"

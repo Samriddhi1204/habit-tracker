@@ -19,12 +19,6 @@ export default function MonthlyBarChart({ data }) {
       <div style={{ width: "100%", height: 240 }}>
         <ResponsiveContainer>
           <BarChart data={data}>
-            <defs>
-              <linearGradient id="monbar" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#fde68a" />
-                <stop offset="100%" stopColor="#f59e0b" />
-              </linearGradient>
-            </defs>
             <CartesianGrid strokeDasharray="3 3" stroke={grid} />
             <XAxis
               dataKey="label"
@@ -42,15 +36,14 @@ export default function MonthlyBarChart({ data }) {
             <Tooltip
               cursor={{ fill: theme === "dark" ? "rgba(255,255,255,0.04)" : "rgba(15,15,27,0.04)" }}
               contentStyle={{
-                background: theme === "dark" ? "rgba(20,20,36,0.95)" : "rgba(255,255,255,0.95)",
+                background: theme === "dark" ? "#23211a" : "#ffffff",
                 border: `1px solid ${grid}`,
-                borderRadius: 12,
+                borderRadius: 8,
                 fontSize: 12,
-                color: theme === "dark" ? "#ebebf5" : "#13131b",
-                backdropFilter: "blur(12px)",
+                color: theme === "dark" ? "#f1efe8" : "#191712",
               }}
             />
-            <Bar dataKey="count" fill="url(#monbar)" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="count" fill="#b45309" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>

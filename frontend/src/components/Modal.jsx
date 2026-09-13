@@ -16,11 +16,11 @@ export default function Modal({ open, onClose, title, children, maxWidth = "max-
   if (!open) return null;
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/30 dark:bg-black/60 backdrop-blur-md animate-fade-in"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 animate-fade-in"
       onClick={onClose}
     >
       <div
-        className={`${maxWidth} w-full max-h-[90vh] glass-strong rounded-2xl animate-slide-up shadow-2xl flex flex-col overflow-hidden`}
+        className={`${maxWidth} w-full max-h-[90vh] card rounded-2xl animate-slide-up flex flex-col overflow-hidden`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between px-6 pt-6 pb-3 shrink-0">

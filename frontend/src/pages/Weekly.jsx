@@ -79,7 +79,7 @@ export default function Weekly() {
           >
             <ChevronLeft size={16} />
           </button>
-          <div className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl glass text-sm font-medium">
+          <div className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg card text-sm font-medium">
             <CalendarDays size={14} className="text-muted" />
             {format(days[0].date, "MMM d")} — {format(days[6].date, "MMM d, yyyy")}
           </div>
