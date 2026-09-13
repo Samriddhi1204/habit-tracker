@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Sparkles, Check, RefreshCw } from "lucide-react";
+import { Lightbulb, Check, RefreshCw } from "lucide-react";
 import Modal from "./Modal.jsx";
 import api from "../api/axios.js";
 
@@ -138,7 +138,7 @@ export default function HabitSuggestionModal({ open, onClose, onAccept }) {
                 </>
               ) : (
                 <>
-                  <Sparkles size={14} />
+                  <Lightbulb size={14} />
                   Get suggestions
                 </>
               )}
@@ -155,7 +155,7 @@ export default function HabitSuggestionModal({ open, onClose, onAccept }) {
             </div>
           )}
           {suggestions.map((s, i) => (
-            <div key={i} className="glass rounded-xl p-4">
+            <div key={i} className="border divider rounded-lg p-4">
               <div className="flex items-center gap-2 mb-1 flex-wrap">
                 <span className="text-xl">{s.icon}</span>
                 <div className="font-medium">{s.name}</div>

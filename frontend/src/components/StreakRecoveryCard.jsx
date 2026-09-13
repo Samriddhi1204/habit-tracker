@@ -18,14 +18,7 @@ export default function StreakRecoveryCard({ habit, onDismiss }) {
   };
 
   return (
-    <div className="relative rounded-2xl p-5 glass overflow-hidden animate-slide-up">
-      <div
-        className="absolute inset-0 pointer-events-none opacity-60"
-        style={{
-          background:
-            "radial-gradient(circle at 0% 0%, rgba(244,114,182,0.22), transparent 55%), radial-gradient(circle at 100% 100%, rgba(239,68,68,0.15), transparent 55%)",
-        }}
-      />
+    <div className="relative card p-5 animate-slide-up">
       <button
         onClick={onDismiss}
         className="absolute top-3 right-3 text-soft hover:text-[var(--text)] z-10"
@@ -35,11 +28,11 @@ export default function StreakRecoveryCard({ habit, onDismiss }) {
       </button>
 
       <div className="flex items-start gap-3 pr-6 relative">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-400 to-pink-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-rose-500/30">
+        <div className="w-10 h-10 rounded-lg bg-[var(--chip-bg)] text-rose-600 dark:text-rose-300 flex items-center justify-center shrink-0">
           <Heart size={18} />
         </div>
         <div className="flex-1">
-          <div className="text-xs font-semibold uppercase tracking-wider text-rose-600 dark:text-rose-300">
+          <div className="text-xs font-semibold uppercase tracking-wider text-muted">
             Streak paused · {habit.name}
           </div>
           <div className="mt-1 text-sm text-soft">
@@ -63,7 +56,7 @@ export default function StreakRecoveryCard({ habit, onDismiss }) {
               )}
             </button>
           ) : (
-            <Markdown className="mt-3 glass rounded-xl p-4 text-sm">
+            <Markdown className="mt-3 bg-[var(--surface-hover)] border divider rounded-lg p-4 text-sm">
               {content}
             </Markdown>
           )}

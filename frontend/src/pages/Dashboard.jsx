@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Plus, Sparkles } from "lucide-react";
+import { Plus, Lightbulb } from "lucide-react";
 import api from "../api/axios.js";
 import Modal from "../components/Modal.jsx";
 import HabitForm from "../components/HabitForm.jsx";
@@ -244,7 +244,7 @@ export default function Dashboard() {
             className="btn-secondary"
             onClick={() => setSuggestOpen(true)}
           >
-            <Sparkles size={14} />
+            <Lightbulb size={14} />
             <span className="hidden sm:inline">Suggest a habit</span>
           </button>
           <button
@@ -388,7 +388,7 @@ export default function Dashboard() {
             Cancel
           </button>
           <button
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 px-4 py-2.5 text-sm font-medium text-white hover:brightness-110 shadow-lg shadow-rose-500/30 transition"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 transition"
             onClick={() => deleteHabit(deleteTarget)}
           >
             Delete

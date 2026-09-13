@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Sparkles, ChevronDown, RefreshCw } from "lucide-react";
+import { Brain, ChevronDown, RefreshCw } from "lucide-react";
 import api from "../api/axios.js";
 import Markdown from "./Markdown.jsx";
 
@@ -24,23 +24,16 @@ export default function AIWeeklyReport() {
   };
 
   return (
-    <div className="card p-5 relative overflow-hidden">
-      <div
-        className="absolute inset-0 pointer-events-none opacity-40"
-        style={{
-          background:
-            "radial-gradient(circle at 0% 0%, rgba(99,102,241,0.25), transparent 60%)",
-        }}
-      />
+    <div className="card p-5">
       <button
         onClick={() => setExpanded((e) => !e)}
-        className="w-full flex items-center gap-3 text-left relative"
+        className="w-full flex items-center gap-3 text-left"
       >
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/30">
-          <Sparkles size={18} />
+        <div className="w-10 h-10 rounded-lg bg-[var(--chip-bg)] text-brand-700 dark:text-brand-300 flex items-center justify-center shrink-0">
+          <Brain size={18} />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="text-sm font-medium">AI Weekly Report</div>
+          <div className="text-sm font-medium">Weekly report</div>
           <div className="text-xs text-muted">
             {content
               ? `Generated ${generatedAt ? generatedAt.toLocaleTimeString() : "now"}`
@@ -54,7 +47,7 @@ export default function AIWeeklyReport() {
       </button>
 
       {expanded && (
-        <div className="mt-4 animate-slide-up relative">
+        <div className="mt-4 animate-slide-up">
           {!content && (
             <button
               onClick={generate}
@@ -68,7 +61,7 @@ export default function AIWeeklyReport() {
                 </>
               ) : (
                 <>
-                  <Sparkles size={14} />
+                  <Brain size={14} />
                   Generate weekly report
                 </>
               )}
@@ -77,7 +70,7 @@ export default function AIWeeklyReport() {
 
           {content && (
             <>
-              <Markdown className="mt-1 glass rounded-xl p-4 text-sm">
+              <Markdown className="mt-1 bg-[var(--surface-hover)] border divider rounded-lg p-4 text-sm">
                 {content}
               </Markdown>
               <div className="mt-3 flex justify-end">

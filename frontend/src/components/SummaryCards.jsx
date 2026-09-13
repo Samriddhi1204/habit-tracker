@@ -22,29 +22,29 @@ export default function SummaryCards({ totalHabits, activeStreaks, bestStreak, w
         icon={ListChecks}
         label="Total habits"
         value={totalHabits}
-        iconBg="rgba(99,102,241,0.15)"
-        iconFg="#6366f1"
+        iconBg="var(--chip-bg)"
+        iconFg="var(--text-soft)"
       />
       <Card
         icon={Flame}
         label="Active streaks"
         value={activeStreaks}
-        iconBg="rgba(249,115,22,0.15)"
-        iconFg="#f97316"
+        iconBg="rgba(234,88,12,0.14)"
+        iconFg="#ea580c"
       />
       <Card
         icon={Trophy}
         label="Best streak"
         value={bestStreak}
-        iconBg="rgba(245,158,11,0.15)"
-        iconFg="#f59e0b"
+        iconBg="rgba(217,119,6,0.14)"
+        iconFg="#b45309"
       />
       <Card
         icon={TrendingUp}
         label="This week"
         value={`${weekRate}%`}
-        iconBg="rgba(16,185,129,0.15)"
-        iconFg="#10b981"
+        iconBg="rgba(48,90,59,0.14)"
+        iconFg="var(--color-brand-600)"
       />
     </div>
   );

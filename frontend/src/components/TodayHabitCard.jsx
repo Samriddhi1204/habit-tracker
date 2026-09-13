@@ -94,7 +94,7 @@ export default function TodayHabitCard({
                 onClick={() => setMenu(false)}
               />
               <div
-                className="fixed z-[110] glass-strong rounded-xl py-1 w-40 shadow-xl animate-fade-in"
+                className="fixed z-[110] card py-1 w-40 animate-fade-in"
                 style={{ top: pos.top, left: pos.left }}
               >
                 <button
@@ -134,8 +134,8 @@ export default function TodayHabitCard({
       <button
         onClick={onToggle}
         className={`shrink-0 w-11 h-11 rounded-full flex items-center justify-center transition ${completed
-          ? "bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-lg shadow-brand-500/40 animate-pop"
-          : "bg-brand-100 border-2 border-border-brand-400 text-brand-400 hover:border-brand-400 hover:text-brand-400"
+          ? "bg-brand-600 dark:bg-brand-500 text-white dark:text-ink-900 animate-pop"
+          : "bg-transparent border-2 border-brand-300 dark:border-brand-700 text-brand-400 hover:border-brand-500 hover:text-brand-500"
           }`}
         aria-label={completed ? "Mark incomplete" : "Mark complete"}
       >

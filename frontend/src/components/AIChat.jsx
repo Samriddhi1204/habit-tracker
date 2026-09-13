@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { MessageCircle, Send, X, Sparkles, RefreshCw } from "lucide-react";
+import { MessageCircle, Send, X, Brain, RefreshCw } from "lucide-react";
 import api from "../api/axios.js";
 import Markdown from "./Markdown.jsx";
 
@@ -55,17 +55,17 @@ export default function AIChat() {
     <>
       <button
         onClick={() => setOpen((o) => !o)}
-        className="fixed bottom-20 md:bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-white shadow-2xl shadow-brand-500/40 flex items-center justify-center hover:scale-105 active:scale-95 transition"
+        className="fixed bottom-20 md:bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-brand-600 dark:bg-brand-500 text-white dark:text-ink-900 shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition"
         aria-label="AI Chat"
       >
         {open ? <X size={22} /> : <MessageCircle size={22} />}
       </button>
 
       {open && (
-        <div className="fixed bottom-36 md:bottom-24 right-6 z-40 w-[min(92vw,380px)] h-[min(70vh,520px)] glass-strong rounded-2xl flex flex-col animate-slide-up shadow-2xl overflow-hidden">
+        <div className="fixed bottom-36 md:bottom-24 right-6 z-40 w-[min(92vw,380px)] h-[min(70vh,520px)] card flex flex-col animate-slide-up overflow-hidden">
           <div className="px-4 py-3 border-b divider flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-white flex items-center justify-center shadow-md shadow-brand-500/30">
-              <Sparkles size={14} />
+            <div className="w-8 h-8 rounded-lg bg-[var(--chip-bg)] text-brand-700 dark:text-brand-300 flex items-center justify-center">
+              <Brain size={14} />
             </div>
             <div>
               <div className="text-sm font-medium">Habit Analysis</div>
@@ -87,8 +87,8 @@ export default function AIChat() {
                 <div
                   className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                     m.role === "user"
-                      ? "bg-gradient-to-br from-brand-500 to-brand-700 text-white rounded-br-md shadow-md shadow-brand-500/30"
-                      : "glass rounded-bl-md"
+                      ? "bg-brand-600 dark:bg-brand-500 text-white dark:text-ink-900 rounded-br-md"
+                      : "bg-[var(--surface-hover)] border divider rounded-bl-md"
                   }`}
                 >
                   {m.role === "user" ? m.content : <Markdown>{m.content}</Markdown>}
@@ -97,7 +97,7 @@ export default function AIChat() {
             ))}
             {loading && (
               <div className="flex justify-start">
-                <div className="glass rounded-2xl rounded-bl-md px-3.5 py-2.5 text-sm text-soft flex items-center gap-2">
+                <div className="bg-[var(--surface-hover)] border divider rounded-2xl rounded-bl-md px-3.5 py-2.5 text-sm text-soft flex items-center gap-2">
                   <RefreshCw size={12} className="animate-spin" />
                   Thinking...
                 </div>
@@ -109,7 +109,7 @@ export default function AIChat() {
                   <button
                     key={i}
                     onClick={() => send(s)}
-                    className="block w-full text-left text-xs rounded-lg glass hover:bg-[var(--surface-hover)] px-3 py-2 text-soft"
+                    className="block w-full text-left text-xs rounded-lg border divider hover:bg-[var(--surface-hover)] px-3 py-2 text-soft"
                   >
                     {s}
                   </button>
