@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎯 AI Habit Tracker
+# Habit Tracker
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge)
 ![Node](https://img.shields.io/badge/Node.js-18+-green?style=for-the-badge&logo=node.js)
@@ -9,9 +9,9 @@
 ![License](https://img.shields.io/badge/license-MIT-yellow?style=for-the-badge)
 ![Status](https://img.shields.io/badge/status-Active-success?style=for-the-badge)
 
-**A full-stack MERN application powered by Google Gemini AI for intelligent habit coaching, streak analytics, and personalized daily motivation.**
+**A full-stack MERN habit tracker with streak analytics and optional AI coaching (Google Gemini).**
 
-[Live Demo](https://ai-habit-tracker-alpha.vercel.app/) · [API Docs](#api-documentation) · [Report Bug](#troubleshooting) · [Request Feature](#roadmap)
+[API Docs](#api-documentation) · [Report Bug](#troubleshooting) · [Request Feature](#roadmap)
 
 </div>
 
@@ -19,16 +19,18 @@
 
 ## 📌 Overview
 
-**AI Habit Tracker** is a sophisticated, full-stack habit management system built on the MERN stack with Google Gemini 2.5 Flash AI at its core. It goes far beyond a simple to-do list — it's a personal coaching platform that:
+**Habit Tracker** is a full-stack habit management system built on the MERN stack. It goes beyond a simple to-do list:
 
 - Tracks habits with automatic streak calculations and visual heatmaps
-- Generates personalized AI weekly reports grounded in your actual data
-- Provides intelligent streak recovery when you slip up
+- Generates weekly reports grounded in your actual data
+- Provides streak recovery guidance when you slip up
 - Delivers daily morning motivation mentioning your specific habits
 - Suggests new habits tailored to your goals and patterns
 - Answers natural language questions about your habit performance
 
-The application was designed with a **glass morphism UI**, full **dark/light theme** support, smooth animations, confetti celebrations, and a responsive layout that works seamlessly on mobile and desktop.
+The AI features above are powered by Google Gemini and are entirely optional — **the app runs fully without an API key**; those endpoints simply return a friendly "AI is disabled" message instead of an AI-generated one. Everything else (auth, habits, logs, stats) works normally either way.
+
+The UI is a flat, solid-surface design with full **dark/light theme** support, subtle animations, confetti celebrations, and a responsive layout that works on mobile and desktop.
 
 ---
 
@@ -781,8 +783,8 @@ All require `Authorization: Bearer <token>`
 ### Prerequisites
 - **Node.js** 18+ and npm
 - **MongoDB Atlas** account (free tier)
-- **Google Gemini API** key ([ai.google.dev](https://ai.google.dev))
 - **Git**
+- **Google Gemini API** key ([ai.google.dev](https://ai.google.dev)) — optional, only needed for the AI features
 
 ---
 
@@ -790,8 +792,8 @@ All require `Authorization: Bearer <token>`
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/Saket22-CS/ai-habit-tracker.git
-cd ai_habit_tracker/backend
+git clone https://github.com/Samriddhi1204/habit-tracker.git
+cd habit-tracker/backend
 
 # 2. Install dependencies
 npm install
@@ -849,8 +851,8 @@ MONGO_URI=mongodb+srv://username:password@cluster.mongodb.net/?appName=YourApp
 JWT_SECRET=your-minimum-32-character-random-secret-here
 JWT_EXPIRES_IN=30d
 
-# AI
-GEMINI_API_KEY=AIzaSyD...
+# AI (optional - leave blank to run without AI features)
+GEMINI_API_KEY=
 GEMINI_MODEL=gemini-2.5-flash
 
 # CORS
@@ -863,8 +865,8 @@ CLIENT_URL=http://localhost:5173
 | `MONGO_URI` | ✅ | MongoDB Atlas connection string |
 | `JWT_SECRET` | ✅ | Min 32 chars. Generate: `openssl rand -hex 32` |
 | `JWT_EXPIRES_IN` | ✅ | Token lifetime: `30d`, `7d`, `24h` |
-| `GEMINI_API_KEY` | ✅ | From [ai.google.dev](https://ai.google.dev) |
-| `GEMINI_MODEL` | ✅ | `gemini-2.5-flash` recommended |
+| `GEMINI_API_KEY` | ❌ optional | From [ai.google.dev](https://ai.google.dev). Leave unset to run without AI features - the API stays fully functional and AI endpoints return a disabled message instead of an error |
+| `GEMINI_MODEL` | ❌ optional | `gemini-2.5-flash` recommended, only used when `GEMINI_API_KEY` is set |
 | `CLIENT_URL` | ✅ | Frontend origin for CORS |
 
 ### Frontend `.env`
@@ -1060,7 +1062,6 @@ graph LR
 # 3. Set environment variable:
 #    VITE_API_URL = https://your-backend.render.com/api
 # 4. Deploy — Vercel auto-detects Vite
-# 5. Live: https://ai-habit-tracker-alpha.vercel.app/
 ```
 
 ### Backend (Render)
@@ -1069,7 +1070,7 @@ graph LR
 # 1. Connect GitHub repo to Render
 # 2. Set build command: npm install
 # 3. Set start command: node server.js
-# 4. Add all env vars from .env (PORT, MONGO_URI, JWT_SECRET, GEMINI_API_KEY, etc.)
+# 4. Add all env vars from .env (PORT, MONGO_URI, JWT_SECRET; GEMINI_API_KEY optional)
 # 5. Set CLIENT_URL = https://your-frontend.vercel.app
 ```
 
@@ -1079,7 +1080,7 @@ graph LR
 - [ ] MongoDB Atlas IP whitelist includes backend server IP (or 0.0.0.0/0)
 - [ ] `CLIENT_URL` points to production frontend domain
 - [ ] `JWT_SECRET` is a long, random, unique value
-- [ ] Gemini API key has sufficient quota for expected usage
+- [ ] Gemini API key (optional) has sufficient quota for expected usage, if AI features are enabled
 - [ ] HTTPS enabled on both frontend and backend
 
 ---
