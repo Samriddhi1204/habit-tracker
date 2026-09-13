@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { Sparkles, Sun, Moon } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 import { useAuth } from "../context/AuthContext.jsx";
 import { useTheme } from "../context/ThemeContext.jsx";
 
@@ -38,7 +38,7 @@ export default function Register() {
     <div className="min-h-screen flex items-center justify-center p-4">
       <button
         onClick={toggle}
-        className="fixed top-4 right-4 p-2.5 rounded-xl glass"
+        className="fixed top-4 right-4 p-2.5 rounded-lg card"
         aria-label="Toggle theme"
       >
         {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
@@ -49,10 +49,10 @@ export default function Register() {
           to="/"
           className="flex items-center justify-center gap-2 mb-6"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 text-white flex items-center justify-center shadow-lg shadow-brand-500/30">
-            <Sparkles size={18} />
+          <div className="w-8 h-8 rounded-md bg-brand-600 dark:bg-brand-500 text-white dark:text-ink-900 flex items-center justify-center font-serif font-semibold">
+            H
           </div>
-          <span className="font-semibold text-lg">AI Habit Tracker</span>
+          <span className="font-semibold text-lg">Habit Tracker</span>
         </Link>
 
         <div className="card p-7">
